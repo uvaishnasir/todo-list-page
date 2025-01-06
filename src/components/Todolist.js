@@ -6,13 +6,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function Todolist() {
   //3 dummy todos
   const [todos, setTodos] = useState([
-    { id: 1, text: "Note #1", completed: false },
-    { id: 2, text: "Note #2", completed: false },
-    { id: 3, text: "Note #3", completed: false },
+    { id: 1, text: "NOTE #1", completed: false },
+    { id: 2, text: "NOTE #2", completed: false },
+    { id: 3, text: "NOTE #3", completed: false },
   ]);
   //handles
   const handleEdit = (id) => {
-    console.log("Edit");
+    //edit logic
   };
   const handleDelete = (id) => {
     // console.log("Edit");
@@ -43,7 +43,7 @@ function Todolist() {
         {todos.map((todo) => (
           <div
             key={todo.id}
-            className="d-flex justify-content-between mx-4 my-3 border-bottom"
+            className="d-flex justify-content-between mx-2 my-3 border-bottom"
           >
             <div>
               <input
@@ -72,6 +72,17 @@ function Todolist() {
           </div>
         ))}
       </div>
+
+      {/* floating add button*/}
+      <button
+        className="btn btn-primary rounded-circle position-fixed"
+        style={{
+          bottom: "20px",
+          right: "400px",
+        }}
+      >
+        <i className="bi bi-plus"></i>
+      </button>
     </div>
   );
 }
