@@ -10,17 +10,32 @@ function Todolist() {
     { id: 2, text: "NOTE #2", completed: false },
     { id: 3, text: "NOTE #3", completed: false },
   ]);
-  //handles
+  const [newTodo, setNewTodo] = useState("");
+  //all handles
   const handleEdit = (id) => {
-    //edit logic
+    const editedText = prompt("Edit your todo:");
+    if (editedText) {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, text: editedText } : todo
+        )
+      );
+    }
   };
   const handleDelete = (id) => {
-    // console.log("Edit");
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
   const handleToggle = (id) => {
     setTodos(
-      todos.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
     );
+  };
+  const handleAdd = () => {
+    if (newTodo.trim() === "") return;
+    setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
+    setNewTodo("");
   };
   return (
     <div className="container mx-auto mt-5 p-4" style={{ width: "750px" }}>
@@ -80,6 +95,7 @@ function Todolist() {
           bottom: "20px",
           right: "400px",
         }}
+        onClick={handleAdd}
       >
         <i className="bi bi-plus"></i>
       </button>
