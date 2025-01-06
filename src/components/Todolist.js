@@ -41,7 +41,10 @@ function Todolist() {
       {/* todo-list */}
       <div className="todo-list">
         {todos.map((todo) => (
-          <div key={todo.id} className="d-flex align-item-center mx-4 my-3">
+          <div
+            key={todo.id}
+            className="d-flex justify-content-between mx-4 my-3 border-bottom"
+          >
             <div>
               <input
                 type="checkbox"
@@ -52,18 +55,20 @@ function Todolist() {
                 {todo.text}
               </label>
             </div>
-            <button
-              className="btn btn-outline-secondary btn-sm me-1"
-              onClick={() => handleEdit(todo.id)}
-            >
-              <i className="bi bi-pencil"></i>
-            </button>
-            <button
-              className="btn btn-outline-secondary btn-sm"
-              onClick={() => handleDelete(todo.id)}
-            >
-              <i className="bi bi-trash"></i>
-            </button>
+            <div>
+              <button
+                className="btn btn-outline-secondary btn-sm me-1"
+                onClick={() => handleEdit(todo.id)}
+              >
+                <i className="bi bi-pencil"></i>
+              </button>
+              <button
+                className="btn btn-outline-secondary btn-sm"
+                onClick={() => handleDelete(todo.id)}
+              >
+                <i className="bi bi-trash"></i>
+              </button>
+            </div>
           </div>
         ))}
       </div>
